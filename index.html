@@ -1,0 +1,255 @@
+// ==========================
+// LEVEL 1 – Loop Practice
+// ==========================
+
+// Task 1 – for...of (String)
+let word = "developer";
+
+console.log("Each character:");
+let count = 0;
+let vowels = "aeiou";
+
+for (let char of word) {
+  console.log(char);
+  count++;
+}
+
+console.log("Total letters:", count);
+
+console.log("Vowels:");
+for (let char of word) {
+  if (vowels.includes(char)) {
+    console.log(char);
+  }
+}
+
+
+// Task 2 – for...of (Array)
+let skills = ["HTML", "CSS", "JavaScript", "React"];
+
+console.log("All skills:");
+for (let skill of skills) {
+  console.log(skill);
+}
+
+for (let skill of skills) {
+  console.log(`I know ${skill}`);
+}
+
+console.log("Total skills:", skills.length);
+
+
+// Task 3 – for...in (Object)
+let employee = {
+  name: "Arun",
+  role: "Tester",
+  salary: 30000,
+  experience: "2 years"
+};
+
+console.log("All keys:");
+for (let key in employee) {
+  console.log(key);
+}
+
+console.log("All values:");
+for (let key in employee) {
+  console.log(employee[key]);
+}
+
+console.log("Name:", employee.name);
+
+
+// ==========================
+// LEVEL 2 – Function Practice
+// ==========================
+
+// Task 4 – Simple Function
+function table(num) {
+  for (let i = 1; i <= 10; i++) {
+    console.log(`${num} x ${i} = ${num * i}`);
+  }
+}
+table(5);
+
+
+// Task 5 – Return Keyword
+function square(num) {
+  return num * num;
+}
+let result = square(4);
+console.log("Square:", result);
+
+
+// Task 6 – Default Parameter
+function register(name, department, role = "Developer") {
+  console.log(`Name: ${name}, Department: ${department}, Role: ${role}`);
+}
+
+register("Swetha", "IT", "Tester");
+register("Swetha", "IT");
+
+
+// ==========================
+// LEVEL 3 – Scope + Hoisting
+// ==========================
+
+// Task 7 – Scope Prediction
+function checkScope() {
+  if (true) {
+    var a = 100;
+    let b = 200;
+  }
+
+  console.log(a); // Works
+  // console.log(b); // Error (Uncomment to see error)
+}
+checkScope();
+
+
+// Task 8 – Hoisting
+console.log(x);
+var x = 10;
+
+try {
+  console.log(y);
+  let y = 20;
+} catch (error) {
+  console.log("Error:", error.message);
+}
+
+
+// ==========================
+// LEVEL 4 – Function Types
+// ==========================
+
+// Task 9 – Named Function
+function greet(name) {
+  console.log(`Welcome ${name}!`);
+}
+greet("Swetha");
+
+
+// Task 10 – Anonymous Function
+let add = function (a, b) {
+  return a + b;
+};
+console.log("Addition:", add(5, 3));
+
+
+// Task 11 – Arrow Function
+let subtract = (a, b) => a - b;
+console.log("Subtraction:", subtract(10, 4));
+
+
+// ==========================
+// LEVEL 5 – Callback & Higher Order
+// ==========================
+
+// Task 12 – Callback
+function calculate(operation, a, b) {
+  return operation(a, b);
+}
+
+function addNumbers(a, b) {
+  return a + b;
+}
+
+function subtractNumbers(a, b) {
+  return a - b;
+}
+
+console.log(calculate(addNumbers, 10, 5));
+console.log(calculate(subtractNumbers, 20, 10));
+
+
+// ==========================
+// LEVEL 6 – Currying
+// ==========================
+
+function total(a) {
+  return function (b) {
+    return function (c) {
+      return a + b + c;
+    };
+  };
+}
+
+console.log("Currying Result:", total(5)(10)(15));
+
+
+// ==========================
+// LEVEL 7 – Generator
+// ==========================
+
+function* reward() {
+  yield "Level 1 Completed";
+  yield "Level 2 Completed";
+  yield "Level 3 Completed";
+  yield "Team Winner";
+}
+
+let rewards = reward();
+
+console.log(rewards.next().value);
+console.log(rewards.next().value);
+
+for (let message of reward()) {
+  console.log(message);
+}
+
+
+// ==========================
+// FINAL TEAM CHALLENGE
+// ==========================
+
+// Object – Team Details
+let team = {
+  name: "Code Warriors",
+  members: 5,
+  project: "JavaScript Practice"
+};
+
+// for...in to print details
+console.log("Team Details:");
+for (let key in team) {
+  console.log(`${key}: ${team[key]}`);
+}
+
+// Callback – Score Calculation
+function calculateScore(operation, a, b) {
+  return operation(a, b);
+}
+
+const multiply = (a, b) => a * b;
+
+console.log("Score:", calculateScore(multiply, 10, 2));
+
+// Generator – Rewards
+function* teamRewards() {
+  yield "Participation Certificate";
+  yield "Best Performance Award";
+}
+
+for (let reward of teamRewards()) {
+  console.log("Reward:", reward);
+}
+
+// Default Parameter
+function teamRegister(name, role = "Member") {
+  console.log(`Team Member: ${name}, Role: ${role}`);
+}
+
+teamRegister("Swetha");
+teamRegister("Arun", "Leader");
+
+// Currying for Bonus
+function bonus(a) {
+  return function (b) {
+    return function (c) {
+      return a + b + c;
+    };
+  };
+}
+
+console.log("Bonus Score:", bonus(10)(20)(30));
